@@ -4,6 +4,7 @@ import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -41,6 +42,7 @@ import net.simplifiedcoding.data.Resource
 import net.simplifiedcoding.navigation.ROUTE_HOME
 import net.simplifiedcoding.navigation.ROUTE_LOGIN
 import net.simplifiedcoding.navigation.ROUTE_SIGNUP
+import net.simplifiedcoding.navigation.ROUTE_TEST
 import net.simplifiedcoding.ui.theme.AppTheme
 import net.simplifiedcoding.ui.theme.spacing
 
@@ -53,7 +55,9 @@ fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
     val loginFlow = viewModel?.loginFlow?.collectAsState()
 
     ConstraintLayout(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.Black)
     ) {
 
         val (refHeader, refEmail, refPassword, refButtonLogin, refTextSignup, refLoader) = createRefs()
@@ -75,6 +79,24 @@ Column(
     horizontalAlignment = Alignment.CenterHorizontally
 ){
 
+
+    Text(
+        modifier = Modifier
+
+            .clickable {
+                navController.navigate(ROUTE_TEST) {
+                    popUpTo(ROUTE_LOGIN) { inclusive = true }
+                }
+            },
+        text = "TEST PAGE",
+        style = MaterialTheme.typography.bodyLarge,
+        textAlign = TextAlign.Center,
+        color = MaterialTheme.colorScheme.onSurface
+    )
+
+
+
+
     Text(
         "LOGIN", color = Color(0xFF40C4FF),
         fontSize = 30.sp,
@@ -90,16 +112,8 @@ Column(
             .size(150.dp),
         contentScale = ContentScale.Inside,
     )
-
-
-
 }
-
-
-
         }
-
-
         TextField(
             value = email,
             onValueChange = {

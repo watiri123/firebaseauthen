@@ -10,6 +10,7 @@ import net.simplifiedcoding.ui.auth.AuthViewModel
 import net.simplifiedcoding.ui.auth.LoginScreen
 import net.simplifiedcoding.ui.auth.SignupScreen
 import net.simplifiedcoding.ui.home.HomeScreen
+import net.simplifiedcoding.ui.home.testScreen
 
 @Composable
 fun AppNavHost(
@@ -32,5 +33,13 @@ fun AppNavHost(
         composable(ROUTE_HOME) {
             HomeScreen(viewModel, navController)
         }
+
+        composable(ROUTE_TEST) {
+            testScreen(viewModel, navController)
+        }
+        composable(ROUTE_DETAIL) {
+            testScreen(viewModel, navController)
+        }
+
     }
 }
