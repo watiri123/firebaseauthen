@@ -35,6 +35,7 @@ import net.simplifiedcoding.R
 import net.simplifiedcoding.navigation.ROUTE_DETAIL
 import net.simplifiedcoding.navigation.ROUTE_HOME
 import net.simplifiedcoding.navigation.ROUTE_LOGIN
+import net.simplifiedcoding.navigation.ROUTE_PAGE
 import net.simplifiedcoding.navigation.ROUTE_SIGNUP
 import net.simplifiedcoding.ui.auth.AuthViewModel
 import net.simplifiedcoding.ui.theme.AppTheme
@@ -268,19 +269,21 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                             }
                             Spacer(modifier = Modifier.height(5.dp))
                             Button(
-                                onClick = {navController.navigate(ROUTE_DETAIL) {
-                                    popUpTo(ROUTE_HOME) { inclusive = true }
-                                }},
+                                onClick = {},
                                 modifier = Modifier,
-                                colors = ButtonDefaults.buttonColors(Color.Black),
                                 shape = RectangleShape,
-
-                                )
+                                colors = ButtonDefaults.buttonColors(Color.Black),
+                            )
                             {
-
                                 Text(
                                     "Details", color = Color.White,
-                                    fontSize = 17.sp
+                                    fontSize = 17.sp,
+                                    modifier = Modifier
+                                        .clickable {
+                                            navController.navigate(ROUTE_DETAIL) {
+                                                popUpTo(ROUTE_HOME) { inclusive = true }
+                                            }
+                                        }
                                 )
                             }
                         }
@@ -357,7 +360,13 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
                                 Text(
                                     "Details", color = Color.White,
-                                    fontSize = 17.sp
+                                    fontSize = 17.sp,
+                                    modifier = Modifier
+                                        .clickable {
+                                            navController.navigate(ROUTE_PAGE) {
+                                                popUpTo(ROUTE_HOME) { inclusive = true }
+                                            }
+                                        }
                                 )
                             }
                         }
@@ -443,7 +452,9 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
             }
 
+            Spacer(modifier = Modifier.height(10.dp))
         }
+
 
         item{
             Row()
@@ -519,8 +530,9 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
 
             }
-
+            Spacer(modifier = Modifier.height(10.dp))
         }
+
 
         item{
             Row()
@@ -573,9 +585,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                             }
                             Spacer(modifier = Modifier.height(5.dp))
                             Button(
-                                onClick = {navController.navigate(ROUTE_DETAIL) {
-                                    popUpTo(ROUTE_HOME) { inclusive = true }
-                                }},
+                                onClick = {},
                                 modifier = Modifier,
                                 colors = ButtonDefaults.buttonColors(Color.Black),
                                 shape = RectangleShape,
@@ -601,34 +611,6 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -32,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import net.simplifiedcoding.R
+import net.simplifiedcoding.navigation.ROUTE_DETAIL
 import net.simplifiedcoding.navigation.ROUTE_HOME
 import net.simplifiedcoding.navigation.ROUTE_LOGIN
 import net.simplifiedcoding.ui.auth.AuthViewModel
@@ -104,14 +106,14 @@ fun Home(viewModel: AuthViewModel?, navController: NavHostController) {
                            )
                            Column() {
                                Text(text = "Tammy",
-                                   fontSize = 30.sp,
+                                   fontSize = 20.sp,
                                    color = Color.White,
                                    textAlign = TextAlign.Right
                                )
                                Spacer(modifier = Modifier.height(5.dp))
 
                                Text(text = "Description:",
-                                   fontSize = 28.sp,
+                                   fontSize = 18.sp,
                                    color = Color.White,
                                    textAlign = TextAlign.Right
                                )
@@ -123,11 +125,10 @@ fun Home(viewModel: AuthViewModel?, navController: NavHostController) {
                        }
 
 
-                       Text(text = " I can't take my cat with me." +
-                        Spacer(modifier = Modifier.size(10.dp))
-                            +
+                        Text(text = " I can't take my cat with me." +
+
                                " If you are a good person and you are good with cats, " +
-                               "please contact me.", color = Color.White, fontSize = 22.sp)
+                               "please contact me.", color = Color.White, fontSize = 18.sp)
 
                    }
 
@@ -145,7 +146,13 @@ fun Home(viewModel: AuthViewModel?, navController: NavHostController) {
                        {
                            Text(
                                "Adopt", color = Color.Black,
-                               fontSize = 18.sp
+                               fontSize = 18.sp,
+                               modifier = Modifier
+                                   .clickable {
+                                       navController.navigate(ROUTE_HOME) {
+                                           popUpTo(ROUTE_DETAIL) { inclusive = true }
+                                       }
+                                   }
                            )
                        }
                    }
@@ -157,21 +164,6 @@ fun Home(viewModel: AuthViewModel?, navController: NavHostController) {
                Spacer(modifier = Modifier.width(10.dp))
            }
        } }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)

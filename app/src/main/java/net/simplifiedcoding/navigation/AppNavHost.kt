@@ -9,6 +9,8 @@ import androidx.navigation.compose.rememberNavController
 import net.simplifiedcoding.ui.auth.AuthViewModel
 import net.simplifiedcoding.ui.auth.LoginScreen
 import net.simplifiedcoding.ui.auth.SignupScreen
+import net.simplifiedcoding.ui.home.Details
+import net.simplifiedcoding.ui.home.Home
 import net.simplifiedcoding.ui.home.HomeScreen
 import net.simplifiedcoding.ui.home.testScreen
 
@@ -17,7 +19,7 @@ fun AppNavHost(
     viewModel: AuthViewModel,
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUTE_LOGIN
+    startDestination: String = ROUTE_TEST
 ) {
     NavHost(
         modifier = modifier,
@@ -38,7 +40,10 @@ fun AppNavHost(
             testScreen(viewModel, navController)
         }
         composable(ROUTE_DETAIL) {
-            testScreen(viewModel, navController)
+            Home(viewModel, navController)
+        }
+        composable(ROUTE_PAGE) {
+            Details(viewModel, navController)
         }
 
     }

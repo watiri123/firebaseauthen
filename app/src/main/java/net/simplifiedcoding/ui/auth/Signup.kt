@@ -175,7 +175,15 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                 width = Dimension.fillToConstraints
             }
         ) {
-            Text(text = stringResource(id = R.string.signup), style = MaterialTheme.typography.titleMedium)
+            Text(text = stringResource(id = R.string.signup), style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier
+                    .clickable {
+                        navController.navigate(ROUTE_LOGIN) {
+                            popUpTo(ROUTE_SIGNUP) { inclusive = true }
+                        }
+                    }
+
+            )
         }
 
 
@@ -194,7 +202,7 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
             text = stringResource(id = R.string.already_have_account),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onSurface
+            color = Color.White
         )
 
         signupFlow?.value?.let {

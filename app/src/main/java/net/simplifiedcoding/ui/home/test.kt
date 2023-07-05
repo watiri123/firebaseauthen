@@ -126,8 +126,8 @@ fun testScreen(viewModel: AuthViewModel?, navController: NavController) {
                     Text(
                         modifier = Modifier
                             .clickable {
-                                navController.navigate(ROUTE_TEST) {
-                                    popUpTo(ROUTE_SIGNUP) { inclusive = true }
+                                navController.navigate(ROUTE_SIGNUP) {
+                                    popUpTo(ROUTE_TEST) { inclusive = true }
                                 }
                             },
                         text = "Get Started", color = Color.White,

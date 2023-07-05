@@ -79,24 +79,6 @@ Column(
     horizontalAlignment = Alignment.CenterHorizontally
 ){
 
-
-    Text(
-        modifier = Modifier
-
-            .clickable {
-                navController.navigate(ROUTE_TEST) {
-                    popUpTo(ROUTE_LOGIN) { inclusive = true }
-                }
-            },
-        text = "TEST PAGE",
-        style = MaterialTheme.typography.bodyLarge,
-        textAlign = TextAlign.Center,
-        color = MaterialTheme.colorScheme.onSurface
-    )
-
-
-
-
     Text(
         "LOGIN", color = Color(0xFF40C4FF),
         fontSize = 30.sp,
@@ -190,7 +172,7 @@ Column(
             text = stringResource(id = R.string.dont_have_account),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onSurface
+            color = Color.White
         )
 
         loginFlow?.value?.let {
